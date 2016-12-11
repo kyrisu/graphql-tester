@@ -9,7 +9,7 @@ export function tester({
   authorization = null,
   jsonBody = false
 }) {
-  return (query) => {
+  function test(query) {
     return new Promise((resolve, reject) => {
       if (server) {
         freeport((err, port) => {
@@ -66,4 +66,9 @@ export function tester({
       });
     });
   };
+
+  test.prototype.query = query => test({query});
+  test.prototype.mutation = mutation => test({mutation});
+
+  return test;
 }
