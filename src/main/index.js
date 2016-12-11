@@ -51,7 +51,7 @@ export function tester({
           if (error) {
             reject(error);
           } else {
-            const result = JSON.parse(body);
+            const result = jsonBody ? body : JSON.parse(body);
 
             resolve({
               raw: body,
