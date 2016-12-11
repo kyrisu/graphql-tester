@@ -67,8 +67,8 @@ export function tester({
     });
   };
 
-  test.prototype.query = query => test({query});
-  test.prototype.mutation = mutation => test({mutation});
+  test.query = query => test({query});
+  test.mutation = mutation => test({mutation});
 
   return test;
 }
