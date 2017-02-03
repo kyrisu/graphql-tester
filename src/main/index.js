@@ -9,7 +9,7 @@ export function tester({
   authorization = null,
   jsonBody = false
 }) {
-  function test(query) {
+  function test(query, variables) {
     return new Promise((resolve, reject) => {
       if (server) {
         freeport((err, port) => {
@@ -67,8 +67,7 @@ export function tester({
     });
   };
 
-  test.query = query => test({query});
-  test.mutation = mutation => test({mutation});
+  test.query = (query, variables) => test({query, variables});
 
   return test;
 }
